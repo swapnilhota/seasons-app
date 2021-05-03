@@ -43,7 +43,7 @@ class App extends React.Component {
         }
 
         return (
-            <Loader />
+            <Loader message="Please accept location request" />
         );
     }
 }
