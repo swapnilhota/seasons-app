@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import SeasonDisplay from './SeasonDisplay';
 
 class App extends React.Component {
 
-    constructor(props) {
-        super(props); //reference to parents constructor function
+    state = { lat: null, errorMessage: '' };
 
-        // always initialise state
-        this.state = { lat: null, errorMessage: '' };
+    componentDidMount() {
+
+        //when component loads
+
+        console.log('Component rendered to screen');
 
         window.navigator.geolocation.getCurrentPosition(
             //success callback
@@ -22,10 +25,6 @@ class App extends React.Component {
         );
     }
 
-    componentDidMount() {
-        console.log('Component rendered to screen');
-    }
-
     componentDidUpdate() {
         console.log('Component updated');
     }
@@ -38,7 +37,7 @@ class App extends React.Component {
         }
         if (!this.state.errorMessage && this.state.lat) {
             return (
-                <div>Latitude: {this.state.lat}</div>
+                <SeasonDisplay lat={this.state.lat} />
             );
         }
 
